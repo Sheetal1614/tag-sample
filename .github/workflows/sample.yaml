@@ -40,11 +40,14 @@ jobs:
       - name: multiline script 
         run: |
            git tag -d third
+           git push --delete origin third
            OUTPUT=$(git rev-parse second)
            git tag -d second
+           git push --delete origin second
            git tag third ${OUTPUT}
            GIT_TAG=$(git rev-parse latest)
            git tag -d latest
+           git push --delete origin latest
            git tag second ${GIT_TAG}
            git tag latest ${{ steps.shortsha.outputs.shortsha }}
            git push --tags
