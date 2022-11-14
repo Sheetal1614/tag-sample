@@ -1,0 +1,50 @@
+name: tag-demo
+on:
+  # Manual trigger from the UI
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Specify git commit sha to build image from'
+      deployto:
+        type: choice
+        description: 'Deploy the built image on environment.'
+        options:
+          - None
+          - Integration
+          - Integration and Qa
+
+  # On push to branch
+  push:
+    branches:
+      - master
+
+jobs:
+  checkout_build_and_push_docker_image:
+    runs-on: ubuntu-latest
+    outputs:
+      shortsha: ${{ steps.shortsha.outputs.shortsha }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.inputs.tag }}
+
+      - name: Generate git sha(short)
+        id: shortsha
+        run: echo "shortsha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Print git sha(short)
+        run: echo "The git sha(short) is ${{ steps.shortsha.outputs.shortsha }}"
+
+      - name: multiline script 
+        run: |
+           git tag -d thirdLatest
+           OUTPUT=$(git rev-parse secondLatest)
+           git tag -d secondLatest
+           git tag thirdLatest ${OUTPUT}
+           GIT_TAG=$(git rev-parse latest)
+           git tag -d latest
+           git tag secondLatest ${GIT_TAG}
+           git tag latest ${{ steps.shortsha.outputs.shortsha }}
+           git push --tags
