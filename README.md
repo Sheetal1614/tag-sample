@@ -8,5 +8,5 @@ If you would like to comment multiple lines in a YAML file, you simple have to s
 
 Declares a method available for all attributes with the given prefix. 
 Uses method_missing and respond_to?
-aaded
+
 s
