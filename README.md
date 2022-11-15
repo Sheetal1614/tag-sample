@@ -11,4 +11,4 @@ If you would like to comment multiple lines in a YAML file, you simple have to s
 # This is an example of a block comment in a YAML file 
 
 If you would like to comment multiple lines in a YAML file, you simple have to start each commented line with a # (hashtag). See the following block comment as an example:
-abcd
+
