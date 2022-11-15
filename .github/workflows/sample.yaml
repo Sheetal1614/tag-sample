@@ -39,11 +39,6 @@ jobs:
 
       - name: multiline script 
         run: |
-           if [ $(git tag -l "$latest") ]; then
-            echo yes
-           else
-            echo no
-           fi
            git tag -d third
            git push origin :third
            OUTPUT=$(git rev-parse second)
