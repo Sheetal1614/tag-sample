@@ -7,4 +7,4 @@ In order to add comments to a YAML file, you simply have to use the # (hashtag s
 If you would like to comment multiple lines in a YAML file, you simple have to start each commented line with a # (hashtag). See the following block comment as an example:
 
 Declares a method available for all attributes with the given prefix. 
-Uses method_missing and respond_to? to rewrite the method.
+Uses method_missing and respond_to? 
