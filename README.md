@@ -11,3 +11,4 @@ Uses method_missing and respond_to?
 
 Declares a method available for all attributes with the given prefix.
 Uses method_missing and respond_to?
+changed yaml file.

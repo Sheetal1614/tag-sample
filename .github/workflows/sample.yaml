@@ -36,18 +36,3 @@ jobs:
 
       - name: Print git sha(short)
         run: echo "The git sha(short) is ${{ steps.shortsha.outputs.shortsha }}"
-
-      - name: multiline script 
-        run: |
-           git tag -d third
-           git push origin :third
-           OUTPUT=$(git rev-parse second)
-           git tag -d second
-           git push origin :second
-           git tag third ${OUTPUT}
-           GIT_TAG=$(git rev-parse latest)
-           git tag -d latest
-           git push origin :latest
-           git tag second ${GIT_TAG}
-           git tag latest HEAD
-           git push --tags
