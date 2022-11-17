@@ -27,7 +27,7 @@ if [ $(git tag -l "$version") ]; then
         git push origin :latest
         git tag second ${x}
         git tag latest HEAD
-        git push origin third second
+        git push --tags
       fi
     else
       z=$(git rev-parse latest)
