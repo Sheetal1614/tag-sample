@@ -8,12 +8,10 @@ if git tag --list 'latest'; then
         git tag -d second
         git push origin :second
         git tag third ${x}
-
         y=$(git rev-parse latest)
         git tag -d latest
         git push origin :latest
         git tag second ${y}
-
         git tag latest HEAD
         git push --tags
       else
@@ -25,7 +23,6 @@ if git tag --list 'latest'; then
         git tag -d latest
         git push origin :latest
         git tag second ${x}
-
         git tag latest HEAD
         git push --tags
       fi
@@ -41,3 +38,4 @@ else
     git tag latest
     git push origin :latest
 fi
+
