@@ -10,4 +10,3 @@ Declares a method available for all attributes with the given prefix.
 
 second
 dusra
-Uses method_missing and respond_to?
