@@ -38,7 +38,7 @@ if [ $(git tag -l "$version") ]; then
       git push  origin latest second
     fi
 else
-    git tag latest
+    git tag latest HEAD
     git push origin latest
 fi
 
