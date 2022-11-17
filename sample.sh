@@ -1,7 +1,10 @@
 #!/bin/bash
-if git tag --list 'latest'; then
-    if git tag --list 'second'; then
-      if git tag --list 'third'; then
+version="latest"
+if [ $(git tag -l "$version") ]; then
+  version="second"
+    if [ $(git tag -l "$version") ]; then
+      version="third"
+      if [ $(git tag -l "$version") ]; then
         git tag -d third
         git push origin :third
         x=$(git rev-parse second)
