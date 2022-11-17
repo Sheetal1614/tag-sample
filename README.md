@@ -10,3 +10,4 @@ Declares a method available for all attributes with the given prefix.
 
 second
 abracadabra
+shakalaka boom boom
