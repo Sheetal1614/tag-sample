@@ -24,7 +24,7 @@ if git tag --list 'latest'; then
         git push origin :latest
         git tag second ${x}
         git tag latest HEAD
-        git push --tags
+        git push origin third second
       fi
     else
       z=$(git rev-parse latest)
@@ -32,10 +32,10 @@ if git tag --list 'latest'; then
       git push origin :latest
       git tag second ${z}
       git tag latest HEAD
-      git push --tags
+      git push  origin latest second
     fi
 else
     git tag latest
-    git push origin :latest
+    git push origin latest
 fi
 
