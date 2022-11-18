@@ -36,3 +36,7 @@ jobs:
 
       - name: Print git sha(short)
         run: echo "The git sha(short) is ${{ steps.shortsha.outputs.shortsha }}"
+
+      - name: Run build script
+        run: ./.github/scripts/build.sh
+        shell: bash
