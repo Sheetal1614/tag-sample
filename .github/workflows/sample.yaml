@@ -17,8 +17,7 @@ on:
   push:
     branches:
       - master
-  before_install:
-    - chmod +x build.sh
+
 jobs:
   checkout_build_and_push_docker_image:
     runs-on: ubuntu-latest
@@ -39,5 +38,7 @@ jobs:
         run: echo "The git sha(short) is ${{ steps.shortsha.outputs.shortsha }}"
 
       - name: Run build script
+        before_install:
+          - chmod +x build.sh
         run: ./.github/scripts/build.sh
         shell: bash
