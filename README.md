@@ -9,4 +9,5 @@ If you would like to comment multiple lines in a YAML file, you simple have to s
 Declares a method available for all attributes with the given prefix. 
 
 abracadabra
-shakalaka boom boom
+shakalaka boom boom ek commit
+shakalaka boom boom ek commit
