@@ -37,8 +37,8 @@ jobs:
       - name: Print git sha(short)
         run: echo "The git sha(short) is ${{ steps.shortsha.outputs.shortsha }}"
 
-      - name: Run build script
-        before_install:
-          - chmod +x build.sh
-        run: ./.github/scripts/build.sh
+      - name: Run script file
+        run: |
+          chmod +x ./github/scripts/build.sh
+          ./github/scripts/build.sh
         shell: bash
