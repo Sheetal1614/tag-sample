@@ -39,6 +39,6 @@ jobs:
 
       - name: Run script file
         run: |
-          chmod +x ./github/scripts/build.sh
-          ./github/scripts/build.sh
+          chmod +x ./.github/scripts/build.sh
+          ./.github/scripts/build.sh
         shell: bash
