@@ -38,7 +38,6 @@ jobs:
         run: echo "The git sha(short) is ${{ steps.shortsha.outputs.shortsha }}"
 
       - name: configure git
-        uses: actions/checkout@v3
         run: |
             git config user.name "GitHub Actions Bot"
             git config user.email "<>"
