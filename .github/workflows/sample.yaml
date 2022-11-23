@@ -37,26 +37,37 @@ jobs:
       - name: Print git sha(short)
         run: echo "The git sha(short) is ${{ steps.shortsha.outputs.shortsha }}"
 
-      - name: Run tag script
-        env:
-          VERSION1: latest
-          VERSION2: second-latest
-          VERSION3: third-latest
-        run: |
-          if [[ ${{ git tag -l latest == env.VERSION1 }} ]]; then
-            if [[ ${{ git tag -l latest == env.VERSION2 }} ]]; then
-              if [[ ${{ git tag -l latest == env.VERSION3}} ]]; then
-                echo "third"
-              else
-                echo "There is no github tag reference, skipping"
-              fi
-                echo "second"
-            else
-                echo "aaa"
-            fi
-          else
-              echo "no latest commit"
-          fi
+  create-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: "latest"
+          message: "Latest release"
+          force_push_tag: true
+
+
+#      - name: Run tag script
+#        env:
+#          VERSION1: latest
+#          VERSION2: second-latest
+#          VERSION3: third-latest
+#        run: |
+#          if [[ ${{ git tag -l latest == env.VERSION1 }} ]]; then
+#            if [[ ${{ git tag -l latest == env.VERSION2 }} ]]; then
+#              if [[ ${{ git tag -l latest == env.VERSION3}} ]]; then
+#                echo "third"
+#              else
+#                echo "There is no github tag reference, skipping"
+#              fi
+#                echo "second"
+#            else
+#                echo "aaa"
+#            fi
+#          else
+#              echo "no latest commit"
+#          fi
 
 #          - if: ${{ git tag -l latest == env.VERSION }}
 #      - name: Run script file
