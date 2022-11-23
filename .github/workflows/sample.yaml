@@ -42,7 +42,6 @@ jobs:
           VERSION1: latest
           VERSION2: second-latest
           VERSION3: third-latest
-        script: tag script
         run: |
           if [[ ${{ git tag -l latest == env.VERSION1 }} ]]; then
             if [[ ${{ git tag -l latest == env.VERSION2 }} ]]; then
