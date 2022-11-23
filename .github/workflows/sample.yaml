@@ -46,20 +46,25 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git tag -l latest
-          if [[ ${{ git tag -l latest == env.VERSION1 }} ]]; then
-            if [[ ${{ git tag -l latest == env.VERSION2 }} ]]; then
-              if [[ ${{ git tag -l latest == env.VERSION3}} ]]; then
-                echo "third"
-              else
-                echo "There is no github tag reference, skipping"
-              fi
-                echo "second"
-            else
-                echo "aaa"
-            fi
-          else
-              echo "no latest commit"
-          fi
+      - name: Run tag
+        if: ${{ git tag -l latest == env.VERSION1 }}
+        run: |
+          echo "third"
+          git tag -l latest
+
+  #            if [[ ${{ git tag -l latest == env.VERSION2 }} ]]; then
+#              if [[ ${{ git tag -l latest == env.VERSION3}} ]]; then
+#                echo "third"
+#              else
+#                echo "There is no github tag reference, skipping"
+#              fi
+#                echo "second"
+#            else
+#                echo "aaa"
+#            fi
+#          else
+#              echo "no latest commit"
+#          fi
 
  
 
