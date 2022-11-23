@@ -46,11 +46,12 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git tag -l latest
-      - name: Run tag
-        if: ${{ git tag -l latest == env.VERSION1 }}
-        run: |
-          echo "third"
-          git tag -l latest
+          git branch
+#      - name: Run tag
+#        if: ${{ git tag -l latest == env.VERSION1 }}
+#        run: |
+#          echo "third"
+#          git tag -l latest
 
   #            if [[ ${{ git tag -l latest == env.VERSION2 }} ]]; then
 #              if [[ ${{ git tag -l latest == env.VERSION3}} ]]; then
