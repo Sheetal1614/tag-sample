@@ -7,7 +7,6 @@ if [ $(git tag -l "$version") ]; then
       if [ $(git tag -l "$version") ]; then
         git tag -d third_latest_int
         git push origin :third_latest_int
-      else
       fi
       x=$(git rev-parse second_latest_int)
       git tag -d second_latest_int
