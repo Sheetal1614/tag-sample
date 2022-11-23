@@ -43,16 +43,28 @@ jobs:
             git config user.email "<>"
             git tag -l latest
 
-      - name: create tag
-        uses: rickstaa/action-create-tag@v1
-        with:
-          tag: "latest"
-          message: "Latest release"
-          force_push_tag: true
+      - name: Run tag script
+        env:
+          VERSION1: latest
+          VERSION2: second-latest
+          VERSION3: third-latest
+        run: |
+          if [[ ${{ git tag -l latest == env.VERSION1 }} ]]; then
+            if [[ ${{ git tag -l latest == env.VERSION2 }} ]]; then
+              if [[ ${{ git tag -l latest == env.VERSION3}} ]]; then
+                echo "third"
+              else
+                echo "There is no github tag reference, skipping"
+              fi
+                echo "second"
+            else
+                echo "aaa"
+            fi
+          else
+              echo "no latest commit"
+          fi
 
-
-
-
+ 
 
 
 #      - name: Run tag script
