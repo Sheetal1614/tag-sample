@@ -37,18 +37,15 @@ jobs:
       - name: Print git sha(short)
         run: echo "The git sha(short) is ${{ steps.shortsha.outputs.shortsha }}"
 
-      - name: configure git
-        run: |
-            git config user.name "GitHub Actions Bot"
-            git config user.email "<>"
-            git tag -l latest
-
       - name: Run tag script
         env:
           VERSION1: latest
           VERSION2: second-latest
           VERSION3: third-latest
         run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git tag -l latest
           if [[ ${{ git tag -l latest == env.VERSION1 }} ]]; then
             if [[ ${{ git tag -l latest == env.VERSION2 }} ]]; then
               if [[ ${{ git tag -l latest == env.VERSION3}} ]]; then
