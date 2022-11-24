@@ -16,7 +16,6 @@ if [ $(git tag -l "latest") ]; then
       git push origin :latest
       git tag second_latest ${z}
       git push  origin second_latest
-
 fi
 git tag latest HEAD
 git push origin latest
