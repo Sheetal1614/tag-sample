@@ -37,58 +37,12 @@ jobs:
       - name: Print git sha(short)
         run: echo "The git sha(short) is ${{ steps.shortsha.outputs.shortsha }}"
 
+      - name: Run script file
+        run: |
+            chmod +x ./.github/scripts/build.sh
+            ./.github/scripts/build.sh
+        shell: bash
 
-#      - name: Run tag script
-#        env:
-#          VERSION1: latest
-#          VERSION2: second-latest
-#          VERSION3: third-latest
-#        run: |
-#          if [[ ${{ git tag -l latest == env.VERSION1 }} ]]; then
-#            if [[ ${{ git tag -l latest == env.VERSION2 }} ]]; then
-#              if [[ ${{ git tag -l latest == env.VERSION3}} ]]; then
-#                echo "third"
-#              else
-#                echo "There is no github tag reference, skipping"
-#              fi
-#                echo "second"
-#            else
-#                echo "aaa"
-#            fi
-#          else
-#              echo "no latest commit"
-#          fi
-
-#          - if: ${{ git tag -l latest == env.VERSION }}
-#      - name: Run script file
-#        if: ${{ git tag -l "$version" }}; then
-#        run: |
-#
-#          git tag -d third_latest
-#          git push origin :third_latest
-#          fi
-#          x=$(git rev-parse second_latest)
-#          git tag -d second_latest
-#          git push origin :second_latest
-#          git tag third_latest ${x}
-#          y=$(git rev-parse latest)
-#          git tag -d latest
-#          git push origin :latest
-#          git tag second_latest ${y}
-#          git tag latest HEAD
-#          git push --tags
-#          else
-#          z=$(git rev-parse latest)
-#          git tag -d latest
-#          git push origin :latest
-#          git tag second_latest ${z}
-#          git tag latest HEAD
-#          git push  origin latest_int second_latest
-#          fi
-#          else
-#          git tag latest HEAD
-#          git push origin latest
-#          fi
 
 
 
