@@ -5,13 +5,26 @@ on:
     inputs:
       tag:
         description: 'Specify git commit sha to build image from'
-      deployto:
-        type: choice
-        description: 'Deploy the built image on environment.'
-        options:
-          - None
-          - Integration
-          - Integration and Qa
+  # Trigger from other workflow
+  workflow_call:
+    inputs:
+      workflowsha:
+        required: true
+        type: string
+      triggertype:
+        required: true
+        type: string
+    secrets:
+      ROLE_ID:
+        required: true
+      SECRET_ID:
+        required: true
+      GH_PAT:
+        required: true
+
+# Ensures that only one deploy task per branch/environment will run at a time.
+concurrency:
+  group: integration-deploy-${{ github.ref }}
 
   # On push to branch
   push:
