@@ -44,5 +44,3 @@ jobs:
             ./.github/scripts/build.sh
         shell: bash
 
-
-
