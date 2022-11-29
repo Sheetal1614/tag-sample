@@ -29,7 +29,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.inputs.tag }}
-#          token: ${{ secrets.DEMO_TAG }}
+          token: ${{ secrets.GH_PAT }}
 
       - name: Generate git sha(short)
         id: shortsha
@@ -40,7 +40,7 @@ jobs:
 
       - name: Run script file
         run: |
-            chmod +x ./.github/scripts/build.sh
-            ./.github/scripts/build.sh
+          chmod +x ./tag_generator.sh
+          ./tag_generator.sh latest_int second_latest_int third_latest_int
         shell: bash
 
