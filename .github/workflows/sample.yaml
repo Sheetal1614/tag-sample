@@ -29,7 +29,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.inputs.tag }}
-          token: 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
+          token: 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
 
       - name: Generate git sha(short)
         id: shortsha
