@@ -5,7 +5,7 @@ on:
     inputs:
       tag:
         description: 'Specify git commit sha to build image from'
-  # Trigger from other workflow
+
   workflow_call:
     inputs:
       workflowsha:
